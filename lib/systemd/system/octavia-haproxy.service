@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenStack Octavia API service
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/haproxy -f /etc/octavia/haproxy.cfg -p /var/lib/octavia/api.pid
+PrivateTmp=true
+NotifyAccess=all
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
